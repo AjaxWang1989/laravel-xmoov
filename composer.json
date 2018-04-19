@@ -13,5 +13,7 @@
             "Zoran\\LaravelXmoov\\": "src"
         }
     },
-    "require": {}
+    "require": {
+        "zoran-wang/xmoov": "~0.0.1"
+    }
 }
