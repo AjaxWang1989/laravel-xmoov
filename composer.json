@@ -1,0 +1,17 @@
+{
+    "name": "zoran-wang/laravel-xmoov",
+    "description": "xmoov for laravel 5+",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wong1989",
+            "email": "skyandsunning@163.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Zoran\\LaravelXmoov\\": "src"
+        }
+    },
+    "require": {}
+}
