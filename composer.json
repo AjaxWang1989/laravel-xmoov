@@ -14,12 +14,12 @@
         }
     },
     "require": {
-        "php": ">=5.5.9",
-        "zoran-wang/xmoov": "^0.0.1"
+     "php": ">=5.5.9",
+        "zoran-wang/xmoov": "~0.1"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.0.1.x-dev"
+            "dev-master": "0.1.x-dev"
         }
     }
 }
