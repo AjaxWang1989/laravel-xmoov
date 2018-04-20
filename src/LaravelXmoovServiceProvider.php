@@ -42,6 +42,10 @@ class LaravelXmoovServiceProvider extends ServiceProvider
 
         $storagePath = storage_path($config['storage_path']);
 
+        $this->app->singleton('xmoov.video', function ($app, Request $request) use($config, $storagePath){
+            return new VideoServer($request, $storagePath, $config);
+        });
+
         $this->app->singleton('xmoov.audio', function ($app, Request $request) use($config, $storagePath){
             return new AudioServer($request, $storagePath, $config);
         });
@@ -60,10 +64,6 @@ class LaravelXmoovServiceProvider extends ServiceProvider
 
         $this->app->singleton('xmoov.file.info', function ($app, Request $request) use($config, $storagePath){
             return new FileInfo($request, $storagePath, $config);
-        });
-
-        $this->app->singleton('xmoov.file', function ($app, Request $request) use($config, $storagePath){
-            return new VideoServer($request, $storagePath, $config);
         });
 
         $this->app->singleton('xmoov.file', function ($app, Request $request) use($config, $storagePath){
