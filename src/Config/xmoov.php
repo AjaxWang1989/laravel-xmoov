@@ -11,6 +11,7 @@ return [
         'expires' => 3600,
         'secret' => 'XMOOV_TOKEN_SECRET'
         ],
+    'stream_handler' => '\Zoran\Xmoov\FlvStreamHandle',
     'logs' => '',
     'file' => null,
     'output_file_name' => null,

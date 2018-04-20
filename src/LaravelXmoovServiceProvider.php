@@ -104,8 +104,14 @@ class LaravelXmoovServiceProvider extends ServiceProvider
             return new XmoovStreamToken(config('xmoov.token.secret'), config('xmoov.token.expires'), $request);
         });
 
+        $this->app->singleton(FlvStreamHandle::class, function (){
+            return new FlvStreamHandle();
+        });
+
         $this->app->singleton('xmoov', function ($app){
-            return new XmoovApplication(config('xmoov'), null, app(FlvStreamHandle::class));
+            $streamHandler = config('xmoov.stream_handler');
+            $streamHandler = $streamHandler ? $app[$streamHandler] : null;
+            return new XmoovApplication(config('xmoov'), null, $streamHandler);
         });
     }
 
