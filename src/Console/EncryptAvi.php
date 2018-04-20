@@ -11,7 +11,7 @@
 
 namespace Zoran\LaravelXmoov\Console;
 
-use App\Utils\FlvStreamHandle;
+use Zoran\Xmoov\FlvStreamHandle;
 use Illuminate\Console\Command;
 
 class EncryptAvi extends Command
@@ -48,8 +48,6 @@ class EncryptAvi extends Command
         $filename = basename($file, '.avi');
         $dir      = dirname($file);
         $tempFile = "{$dir}" . DIRECTORY_SEPARATOR . "{$filename}.temp.flv";
-        app('ffmpeg')->execute("-i {$file} {$tempFile}");
-        unlink($file);
-        app(FlvStreamHandle::class)->encrypt($tempFile);
+        app('xmoov')->encrypt($file, $tempFile);
     }
 }

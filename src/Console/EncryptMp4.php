@@ -48,10 +48,6 @@ class EncryptMp4 extends Command
         $filename = basename($file, '.mp4');
         $dir      = dirname($file);
         $tempFile = $dir . DIRECTORY_SEPARATOR . "{$filename}.temp.flv";
-
-        app('ffmpeg')->execute("-i {$file} {$tempFile}");
-
-        unlink($file);
-        app(FlvStreamHandle::class)->encrypt($tempFile);
+        app('xmoov')->encrypt($file, $tempFile);
     }
 }

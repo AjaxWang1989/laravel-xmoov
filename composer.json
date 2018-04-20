@@ -15,14 +15,14 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "zoran-wang/xmoov": "0.1.2"
+        "zoran-wang/xmoov": "~0.1.5"
     },
     "extra": {
         "branch-alias": {
             "dev-master": "0.0.1.x-dev"
         },
         "laravel": {
-            "providers": [
+            "providers":[
                 "Zoran\\LaravelXmoov\\LaravelXmoovServiceProvider"
             ]
         }
