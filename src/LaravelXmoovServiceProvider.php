@@ -111,7 +111,9 @@ class LaravelXmoovServiceProvider extends ServiceProvider
         $this->app->singleton('xmoov', function ($app){
             $streamHandler = config('xmoov.stream_handler');
             $streamHandler = $streamHandler ? $app[$streamHandler] : null;
-            return new XmoovApplication(config('xmoov'), null, $streamHandler);
+            $server = config('xmoov.server');
+            $server = $server ? $app[$server] : null;
+            return new XmoovApplication(config('xmoov'), $server, $streamHandler);
         });
     }
 

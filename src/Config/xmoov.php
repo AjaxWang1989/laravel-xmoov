@@ -12,6 +12,7 @@ return [
         'secret' => 'XMOOV_TOKEN_SECRET'
         ],
     'stream_handler' => '\Zoran\Xmoov\FlvStreamHandle',
+    'server'    => 'xmoov.video',
     'logs' => '',
     'file' => null,
     'output_file_name' => null,
