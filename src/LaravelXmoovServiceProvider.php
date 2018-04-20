@@ -42,55 +42,55 @@ class LaravelXmoovServiceProvider extends ServiceProvider
 
         $storagePath = storage_path($config['storage_path']);
 
-        $this->app->singleton('xmoov.audio', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.audio', function ($app, Request $request) use($config, $storagePath){
             return new AudioServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.player', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.player', function ($app, Request $request) use($config, $storagePath){
             return new PlayerServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.download', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.download', function ($app, Request $request) use($config, $storagePath){
             return new DownloadServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.embed', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.embed', function ($app, Request $request) use($config, $storagePath){
             return new EmbedServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.file.info', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.file.info', function ($app, Request $request) use($config, $storagePath){
             return new FileInfo($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.file', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.file', function ($app, Request $request) use($config, $storagePath){
             return new VideoServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.file', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.file', function ($app, Request $request) use($config, $storagePath){
             return new FileServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.image', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.image', function ($app, Request $request) use($config, $storagePath){
             return new ImageServer($request, $storagePath, $config);
         });
 
-        $this->app->singleton('xmoov.private.image', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.private.image', function ($app, Request $request) use($config, $storagePath){
             $server = new PrivateImageServer($request, $storagePath, $config);
             $server->setToken(app('xmoov.token'));
             return $server;
         });
 
-        $this->app->singleton('xmoov.private.download', function (Request $request) use($config, $storagePath){
+        $this->app->singleton('xmoov.private.download', function ($app, Request $request) use($config, $storagePath){
             $server = new PrivateDownloadServer($request, $storagePath, $config);
             $server->setToken(app('xmoov.token'));
             return $server;
         });
 
-        $this->app->singleton('xmoov.token', function (Request $request){
+        $this->app->singleton('xmoov.token', function ($app, Request $request){
             return new XmoovStreamToken(config('xmoov.token.secret'), config('xmoov.token.expires'), $request);
         });
 
-        $this->app->singleton('xmoov', function (){
+        $this->app->singleton('xmoov', function ($app){
             return new XmoovApplication(config('xmoov'), null, app(FlvStreamHandle::class));
         });
     }
