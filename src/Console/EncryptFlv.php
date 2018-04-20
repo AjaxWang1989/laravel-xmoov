@@ -40,6 +40,6 @@ class EncryptFlv extends Command
         $filename = basename($file, '.flv');
         $tempFile     = dirname($file) . DIRECTORY_SEPARATOR . $filename . '.temp.flv';
         rename($file, $tempFile);
-        app(FlvStreamHandle::class)->encrypt($tempFile);
+        app('xmoov')->handler->encrypt($tempFile);
     }
 }
