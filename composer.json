@@ -15,7 +15,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "zoran-wang/xmoov": "0.1.1"
+        "zoran-wang/xmoov": "0.1.2"
     },
     "extra": {
         "branch-alias": {
