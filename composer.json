@@ -21,6 +21,8 @@
         "branch-alias": {
             "dev-master": "0.0.1.x-dev"
         },
-        "provider": "Zoran\\LaravelXmoov\\LaravelXmoovServiceProvider"
+        "laravel": {
+            "providers": "Zoran\\LaravelXmoov\\LaravelXmoovServiceProvider"
+        }
     }
 }
