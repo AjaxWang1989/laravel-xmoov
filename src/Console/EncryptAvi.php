@@ -21,7 +21,7 @@ class EncryptAvi extends Command
      *
      * @var string
      */
-    protected $signature = 'avi:encrypt {file}';
+    protected $signature = 'avi:encrypt {file} {encrypt}';
 
     /**
      * The console command description.
@@ -45,9 +45,10 @@ class EncryptAvi extends Command
     public function handle()
     {
         $file     = $this->argument('file');
+        $encrypt = $this->argument('encrypt');
         $filename = basename($file, '.avi');
         $dir      = dirname($file);
         $tempFile = "{$dir}" . DIRECTORY_SEPARATOR . "{$filename}.temp.flv";
-        app('xmoov')->encrypt($file, $tempFile);
+        app('xmoov')->encode($file, $tempFile, $encrypt);
     }
 }

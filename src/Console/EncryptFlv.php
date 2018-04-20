@@ -12,7 +12,7 @@ class EncryptFlv extends Command
      *
      * @var string
      */
-    protected $signature = 'flv:encrypt {file}';
+    protected $signature = 'flv:encrypt {file} {encrypt}';
 
     /**
      * The console command description.
@@ -36,10 +36,11 @@ class EncryptFlv extends Command
     public function handle()
     {
         $file = $this->argument('file');
+        $encrypt = $this->argument('encrypt');
 
         $filename = basename($file, '.flv');
         $tempFile     = dirname($file) . DIRECTORY_SEPARATOR . $filename . '.temp.flv';
         rename($file, $tempFile);
-        app('xmoov')->handler->encrypt($tempFile);
+        app('xmoov')->handler->encode($tempFile, $encrypt);
     }
 }

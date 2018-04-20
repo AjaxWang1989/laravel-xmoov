@@ -21,7 +21,7 @@ class EncryptMp4 extends Command
      *
      * @var string
      */
-    protected $signature = 'mp4:encrypt {file}';
+    protected $signature = 'mp4:encrypt {file} {encrypt}';
 
     /**
      * The console command description.
@@ -45,9 +45,10 @@ class EncryptMp4 extends Command
     public function handle()
     {
         $file     = $this->argument('file');
+        $encrypt = $this->argument('encrypt');
         $filename = basename($file, '.mp4');
         $dir      = dirname($file);
         $tempFile = $dir . DIRECTORY_SEPARATOR . "{$filename}.temp.flv";
-        app('xmoov')->encrypt($file, $tempFile);
+        app('xmoov')->encode($file, $tempFile, $encrypt);
     }
 }
