@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Zoran\LaravelXmoov\Console\EncryptAvi;
 use Zoran\LaravelXmoov\Console\EncryptFlv;
 use Zoran\LaravelXmoov\Console\EncryptMp4;
+use Zoran\LaravelXmoov\Console\XmoovTokenSecretGenerateCommand;
 use Zoran\Xmoov\Application as XmoovApplication;
 use Zoran\Xmoov\FlvStreamHandle;
 use Zoran\Xmoov\Servers\AudioServer;
@@ -37,7 +38,8 @@ class LaravelXmoovServiceProvider extends ServiceProvider
         $this->commands([
             EncryptAvi::class,
             EncryptMp4::class,
-            EncryptFlv::class
+            EncryptFlv::class,
+            XmoovTokenSecretGenerateCommand::class
         ]);
         $config = config('xmoov');
 
